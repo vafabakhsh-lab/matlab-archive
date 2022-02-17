@@ -1,0 +1,14 @@
+function count = getDecay_J(dwellData, bounds, cutoff_t)
+    
+    start_low = bounds(1);
+    start_high = bounds(2);
+    end_low = bounds(3);
+    end_high = bounds(4);
+    
+    selection = find(dwellData(:,1) > start_low & dwellData(:,1) < start_high & dwellData(:,2) > end_low & dwellData(:,2) < end_high & dwellData(:, 3)< 100);
+    i = 1; 
+       for n = selection'
+          count(i, 1) = dwellData(n, 3);
+          i = i + 1;
+      end
+    x=linspace(2, cutoff_t/0.05, 
